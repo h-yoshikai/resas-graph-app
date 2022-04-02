@@ -8,15 +8,27 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import useSWR from "swr";
+
+import { fetcher } from "@/src/utils/fetcher";
 
 export const GraphArea = () => {
+  const { data, error } = useSWR("api/population/1", fetcher);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>error</div>;
+  }
+
+  const series = { name: "北海道", data: data.result.data[0].data };
   return (
     <div style={{ height: "300px" }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
           height={300}
-          data={testarray}
           margin={{
             top: 5,
             right: 30,
@@ -29,7 +41,7 @@ export const GraphArea = () => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line dataKey="value" />
+          <Line dataKey="value" data={series.data} name={series.name} />
         </LineChart>
       </ResponsiveContainer>
     </div>
