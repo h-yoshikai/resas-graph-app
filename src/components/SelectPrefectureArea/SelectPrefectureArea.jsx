@@ -1,15 +1,14 @@
+import PrefectureCheckBox from "@/src/components/PrefectureCheckBox";
+
 export const SelectPrefectureArea = () => {
   return (
     <div>
       {PREFECTURE_LIST.result.map((pref) => (
-        <div key={pref.prefCode}>
-          <input
-            type="checkbox"
-            name="prefecture"
-            id={`prefCode${pref.prefCode}`}
-          />
-          <label htmlFor={`prefCode${pref.prefCode}`}>{pref.prefName}</label>
-        </div>
+        <PrefectureCheckBox
+          key={pref.prefCode}
+          prefCode={pref.prefCode}
+          prefName={pref.prefName}
+        />
       ))}
     </div>
   );
