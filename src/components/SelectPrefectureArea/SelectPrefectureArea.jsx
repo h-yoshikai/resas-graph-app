@@ -1,9 +1,21 @@
-import PrefectureCheckBox from "@/src/components/PrefectureCheckBox";
+import useSWRImmutable from "swr";
 
-export const SelectPrefectureArea = ({ prefectureList }) => {
+import PrefectureCheckBox from "@/src/components/PrefectureCheckBox";
+import { fetcher } from "@/src/utils/fetcher";
+
+export const SelectPrefectureArea = () => {
+  const { data, error } = useSWRImmutable("/api/prefectures", fetcher);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>error</div>;
+  }
+
   return (
     <div>
-      {prefectureList.map((pref) => (
+      {data.result.map((pref) => (
         <PrefectureCheckBox
           key={pref.prefCode}
           prefCode={pref.prefCode}
