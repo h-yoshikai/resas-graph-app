@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:import/typescript"],
+  "rules": {
+    "semi": "error",
+    "quotes": "error",
+    "import/order": [
+      2,
+      {
+        "alphabetize": { "order": "asc" },
+        "newlines-between": "always"
+      }
+    ]
+  }
 }
