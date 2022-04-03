@@ -14,11 +14,12 @@ import classes from "@/src/components/GraphArea/GraphArea.module.css";
 export const GraphArea = ({ series }) => {
   return (
     <div>
+      <h2 className={classes.title}>人口構成</h2>
       <div className={classes.graph}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             margin={{
-              top: 20,
+              top: 5,
               right: 20,
               left: 5,
               bottom: 20,
