@@ -27,10 +27,10 @@ export const PopulationGraphByPrefecture = () => {
 
   return (
     <div className={styles.container}>
-      <GraphArea series={series} />
       <div>
         <SelectPrefectureArea onChange={handleChange} />
       </div>
+      <GraphArea series={series} />
     </div>
   );
 };
