@@ -9,15 +9,17 @@ import {
   YAxis,
 } from "recharts";
 
+import classes from "@/src/components/GraphArea/GraphArea.module.css";
+
 export const GraphArea = ({ series }) => {
   return (
-    <div style={{ height: "400px", marginTop: "20px" }}>
+    <div className={classes.container}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           margin={{
             top: 20,
-            right: 50,
-            left: 30,
+            right: 20,
+            left: 5,
             bottom: 20,
           }}
         >
@@ -33,11 +35,11 @@ export const GraphArea = ({ series }) => {
           />
           <YAxis
             label={{
-              value: "人口数",
+              value: "人口数(万人)",
               angle: -90,
               position: "insideLeft",
-              offset: -10,
             }}
+            tickFormatter={(number) => number / 10000}
           />
           <Tooltip />
           <Legend verticalAlign="top" />
