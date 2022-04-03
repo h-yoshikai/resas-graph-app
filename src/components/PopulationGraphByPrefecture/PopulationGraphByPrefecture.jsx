@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 
 import GraphArea from "@/src/components/GraphArea";
+import styles from "@/src/components/PopulationGraphByPrefecture/PopulationGraphByPrefecture.module.css";
 import SelectPrefectureArea from "@/src/components/SelectPrefectureArea";
-import styles from "@/src/styles/Home.module.css";
 import { fetcher } from "@/src/utils/fetcher";
 
 export const PopulationGraphByPrefecture = () => {
@@ -26,11 +26,11 @@ export const PopulationGraphByPrefecture = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <GraphArea series={series} />
-      <div className={styles.container}>
+      <div>
         <SelectPrefectureArea onChange={handleChange} />
       </div>
-    </>
+    </div>
   );
 };
