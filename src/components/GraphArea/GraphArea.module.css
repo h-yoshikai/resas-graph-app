@@ -1,4 +1,9 @@
-.container {
+.graph {
   height: 50vh;
-  margintop: 20px;
+  margin-top: 20px;
+}
+
+.legend {
+  height: 75vh; /* 凡例領域の確保 */
+  margin-top: 5px;
 }
