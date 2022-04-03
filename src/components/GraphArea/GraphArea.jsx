@@ -12,7 +12,7 @@ import useSWR from "swr";
 
 import { fetcher } from "@/src/utils/fetcher";
 
-export const GraphArea = () => {
+export const GraphArea = ({ series }) => {
   const { data: data1, error: error1 } = useSWR("api/population/1", fetcher);
   const { data: data2, error: error2 } = useSWR("api/population/2", fetcher);
   if (!data1 || !data2) {
@@ -23,10 +23,10 @@ export const GraphArea = () => {
     return <div>error</div>;
   }
 
-  const series = [
-    { name: "北海道", data: data1.result.data[0].data },
-    { name: "青森県", data: data2.result.data[0].data },
-  ];
+  // const series = [
+  //   { name: "北海道", data: data1.result.data[0].data },
+  //   { name: "青森県", data: data2.result.data[0].data },
+  // ];
   return (
     <div style={{ height: "300px" }}>
       <ResponsiveContainer width="100%" height="100%">
