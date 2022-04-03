@@ -3,7 +3,7 @@ import useSWRImmutable from "swr";
 import PrefectureCheckBox from "@/src/components/PrefectureCheckBox";
 import { fetcher } from "@/src/utils/fetcher";
 
-export const SelectPrefectureArea = () => {
+export const SelectPrefectureArea = ({ onChange }) => {
   const { data, error } = useSWRImmutable("/api/prefectures", fetcher);
   if (!data) {
     return <div>Loading...</div>;
@@ -20,6 +20,7 @@ export const SelectPrefectureArea = () => {
           key={pref.prefCode}
           prefCode={pref.prefCode}
           prefName={pref.prefName}
+          onChange={onChange}
         />
       ))}
     </div>

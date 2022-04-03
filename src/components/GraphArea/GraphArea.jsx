@@ -8,43 +8,39 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import useSWR from "swr";
 
-import { fetcher } from "@/src/utils/fetcher";
-
-export const GraphArea = () => {
-  const { data: data1, error: error1 } = useSWR("api/population/1", fetcher);
-  const { data: data2, error: error2 } = useSWR("api/population/2", fetcher);
-  if (!data1 || !data2) {
-    return <div>Loading...</div>;
-  }
-
-  if (error1 || error2) {
-    return <div>error</div>;
-  }
-
-  const series = [
-    { name: "北海道", data: data1.result.data[0].data },
-    { name: "青森県", data: data2.result.data[0].data },
-  ];
+export const GraphArea = ({ series }) => {
   return (
-    <div style={{ height: "300px" }}>
+    <div style={{ height: "400px", marginTop: "20px" }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          width={500}
-          height={300}
           margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
+            top: 20,
+            right: 50,
+            left: 30,
+            bottom: 20,
           }}
         >
           <CartesianGrid />
-          <XAxis dataKey="year" allowDuplicatedCategory={false} />
-          <YAxis />
+          <XAxis
+            dataKey="year"
+            allowDuplicatedCategory={false}
+            label={{
+              value: "年度",
+              position: "insideBottom",
+              offset: -10,
+            }}
+          />
+          <YAxis
+            label={{
+              value: "人口数",
+              angle: -90,
+              position: "insideLeft",
+              offset: -10,
+            }}
+          />
           <Tooltip />
-          <Legend />
+          <Legend verticalAlign="top" />
           {series.map((item, index) => (
             <Line
               dataKey="value"
