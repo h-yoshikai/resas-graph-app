@@ -27,9 +27,7 @@ export const PopulationGraphByPrefecture = () => {
 
   return (
     <div className={styles.container}>
-      <div>
-        <SelectPrefectureArea onChange={handleChange} />
-      </div>
+      <SelectPrefectureArea onChange={handleChange} />
       <GraphArea series={series} />
     </div>
   );
