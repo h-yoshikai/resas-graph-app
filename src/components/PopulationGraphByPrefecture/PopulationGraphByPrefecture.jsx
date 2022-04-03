@@ -10,12 +10,14 @@ export const PopulationGraphByPrefecture = () => {
 
   const handleChange = async (prefCode, prefName, isChecked) => {
     const data = await fetcher(`/api/population/${prefCode}`);
-    setSeries((prevSeries) => {
-      return [
-        ...prevSeries,
-        { name: prefName, data: data.result.data[0].data },
-      ];
-    });
+    if (isChecked) {
+      setSeries((prevSeries) => {
+        return [
+          ...prevSeries,
+          { name: prefName, data: data.result.data[0].data },
+        ];
+      });
+    }
   };
 
   return (
