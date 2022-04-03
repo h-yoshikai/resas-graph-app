@@ -1,6 +1,7 @@
 import useSWRImmutable from "swr";
 
 import PrefectureCheckBox from "@/src/components/PrefectureCheckBox";
+import classes from "@/src/components/SelectPrefectureArea/SelectPrefectureArea.module.css";
 import { fetcher } from "@/src/utils/fetcher";
 
 export const SelectPrefectureArea = ({ onChange }) => {
@@ -15,14 +16,17 @@ export const SelectPrefectureArea = ({ onChange }) => {
 
   return (
     <div>
-      {data.result.map((pref) => (
-        <PrefectureCheckBox
-          key={pref.prefCode}
-          prefCode={pref.prefCode}
-          prefName={pref.prefName}
-          onChange={onChange}
-        />
-      ))}
+      <h2 className={classes.title}>都道府県一覧</h2>
+      <div className={classes.prefectureArea}>
+        {data.result.map((pref) => (
+          <PrefectureCheckBox
+            key={pref.prefCode}
+            prefCode={pref.prefCode}
+            prefName={pref.prefName}
+            onChange={onChange}
+          />
+        ))}
+      </div>
     </div>
   );
 };

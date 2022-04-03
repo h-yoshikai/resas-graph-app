@@ -1,0 +1,9 @@
+.prefectureArea {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.title {
+  border-bottom: solid 3px #f4a47f;
+}
