@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import GraphArea from "@/src/components/GraphArea";
 import SelectPrefectureArea from "@/src/components/SelectPrefectureArea";
@@ -8,7 +8,7 @@ import { fetcher } from "@/src/utils/fetcher";
 export const PopulationGraphByPrefecture = () => {
   const [series, setSeries] = useState([]);
 
-  const handleChange = async (prefCode, prefName, isChecked) => {
+  const handleChange = useCallback(async (prefCode, prefName, isChecked) => {
     if (isChecked) {
       const data = await fetcher(`/api/population/${prefCode}`);
       setSeries((prevSeries) => {
@@ -23,7 +23,7 @@ export const PopulationGraphByPrefecture = () => {
         return prevSeries.filter((item) => item.name !== prefName);
       });
     }
-  };
+  }, []);
 
   return (
     <>
