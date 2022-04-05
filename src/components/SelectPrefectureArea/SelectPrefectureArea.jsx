@@ -6,7 +6,7 @@ import { fetcher } from "@/src/utils/fetcher";
 
 export const SelectPrefectureArea = ({ onChange }) => {
   const { data, error } = useSWRImmutable("/api/prefectures", fetcher);
-  if (!data) {
+  if (!data && !error) {
     return <div>Loading...</div>;
   }
 
